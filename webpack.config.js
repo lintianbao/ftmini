@@ -9,18 +9,20 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        app:'./src/client/app.js'
+        app:'./src/client/app.js',
+        defaultSkin:'./src/client/skin/default/defaultSkin.js'
     },
     output: {
         path: path.join(__dirname,'/assets/dist'),
-        filename: "js/[name].js"
+        filename: "js/[name].js",
+        publicPath: "../"
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         // new CopyWebpackPlugin([{
         //
         // }])
-        //new ExtractTextPlugin('style/[name].css')
+        new ExtractTextPlugin('style/[name].css')
         // new CompressionPlugin({
         //     asset:'[path],gz[query]',
         //     algorithm:"gzip",
@@ -32,8 +34,9 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
-            { test: /\.css$/, loader: "style!css" },
-            {test:/\.html$/,loader:'raw-loader'}
+            {test:/\.html$/,loader:'raw-loader'},
+            {test: /\.less$/, use: ExtractTextPlugin.extract([ 'css-loader', 'less-loader' ])},
+            { test: /\.css$/, use: ExtractTextPlugin.extract([ 'css-loader', 'postcss-loader' ])}
         ]
     }
 };
