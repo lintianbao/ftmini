@@ -5,6 +5,7 @@ module.exports = function($scope){
 
     $scope.name = 'home';
 
+
     function SuperType(){
         this.property = true;
     }
@@ -23,10 +24,6 @@ module.exports = function($scope){
         return this.subprototype;
     };
 
-    var instance1 = new SubType();
-    var instance2 = new SubType();
-    console.log(instance1);
-    console.log(instance1.getSuperValue());
 
     var result = [];
     for(var i =0;i<10;i++){

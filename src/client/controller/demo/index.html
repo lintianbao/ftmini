@@ -1,4 +1,12 @@
-<h3>hi {{name}}</h3>
-<div>
-    <input class="form-input" type="text" ng-model="name"/>
+<h1>hi {{name}}</h1>
+<div id="app">
+    <h2>{{message}}</h2>
+</div>
+<div style="font-size: 30px;">
+    <label>请输入的大名：</label>
+    <input style="height:40px;width:300px;font-size: 30px;" class="form-input" type="text" ng-model="name"/>
+</div>
+<div id="example-2">
+    <input type="text" v-model="userName"/>
+    <simple-counter v-bind:sub="userName" v-on:touch="parentHandler" v-on:click.native="yuansheng"></simple-counter>
 </div>

@@ -9,6 +9,7 @@ module.exports = function(){
     var config = require('./config');
 
     window.jQuery = $;
+    require("bootstrap/dist/js/bootstrap.js");
 
     var app = angular.module('app',[router]);
 
